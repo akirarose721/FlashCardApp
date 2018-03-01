@@ -25,19 +25,20 @@ var Deck = mongoose.model("Deck", deckSchema);
 
 
 app.get("/", function(req, res) {
-    res.render("index");
+    res.redirect("/decks");
 });
 
 //INDEX
 app.get("/decks", function(req, res){
    Deck.find({}, function(err, decks){
        if(err){
-           res.send("Error!");
+           console.log("Error!");
        } else {
            res.render("index", {decks: decks});
        }
    });
 });
+
 
 //NEW
 app.get("/decks/new", function(req, res) {
