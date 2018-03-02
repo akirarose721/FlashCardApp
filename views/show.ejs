@@ -1,8 +1,8 @@
-
 <h1><%= deck.subject %></h1>
 <p>Chapter: <%=deck.chapter%> </p>
 <p>Date: <%= deck.created.toDateString() %></p>
-
+<p>Front: <%= deck.cards[0].front %></p>
+<p>Back: <%= deck.cards[0].back %></p>
 
 <!--<a href="/decks/cards">add card</a>-->
 
