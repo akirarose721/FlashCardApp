@@ -13,11 +13,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
-//MONGOOSE MODEL/CONFIG
 var deckSchema = new mongoose.Schema({
     subject: String,
     chapter: Number,
-    cards: Array,
+    cards: [{front: String, back: String}],
     created: {type: Date, default: Date.now}
 });
 
@@ -48,12 +47,37 @@ app.get("/decks/new", function(req, res) {
 //CREATE
 app.post("/decks", function(req, res){
     //create deck
+    console.log(req.body);
     Deck.create(req.body.deck, function(err, newDeck){
         if(err){
-            res.render("new");
+            res.send(err);
         } else {
             //Redirect to the index
             res.redirect("/decks");
+        }
+    });
+});
+// app.post("/decks/cards", function(req, res){
+//     //creat card
+//     Card.create(req.body.card, function(err, newCard){
+//         if(err) {
+//             res.redirect("/decks");
+//         } else {
+//             //redirect to show page
+//           res.redirect("/decks/cards");
+//         }
+//     });
+// });
+
+//SHOW
+app.get("/decks/:id", function(req, res) {
+    //get deck by id
+    Deck.findById(req.params.id, function(err, foundDeck){
+        if(err){
+            res.redirect("/decks");
+        } else {
+            //redirect to show page
+            res.render("show", {deck: foundDeck});
         }
     });
 });
