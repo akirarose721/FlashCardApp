@@ -1,9 +1,16 @@
+<% include ./partials/header %>
 <h1><%= deck.subject %></h1>
 <p>Chapter: <%=deck.chapter%> </p>
 <p>Date: <%= deck.created.toDateString() %></p>
-<p>Front: <%= deck.cards[0].front %></p>
-<p>Back: <%= deck.cards[0].back %></p>
 
-<!--<a href="/decks/cards">add card</a>-->
+<div style="border: 1px solid blue; width: 150px">
+    <p id="front">Front: <span id="front"> <%= deck.cards[1].front %> </span></p>
+    <p id="back">Back: <%= deck.cards[1].back %></p>
+    <p id="demo"></p>
+    <button id="target" onclick="myFunction()">next</button>
+</div>
 
+<!--go back to home-->
+<a href="/decks/">home</a>
 
+<% include ./partials/footer %>
