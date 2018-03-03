@@ -1,16 +1,43 @@
 <% include ./partials/header %>
+
 <h1><%= deck.subject %></h1>
 <p>Chapter: <%=deck.chapter%> </p>
 <p>Date: <%= deck.created.toDateString() %></p>
-
-<div style="border: 1px solid blue; width: 150px">
-    <p id="front">Front: <span id="front"> <%= deck.cards[1].front %> </span></p>
-    <p id="back">Back: <%= deck.cards[1].back %></p>
-    <p id="demo"></p>
-    <button id="target" onclick="myFunction()">next</button>
+<% var count = 0 %> 
+<div class="card">
+    <% deck.cards.forEach(function(card){ %>
+    <div style="border: 1px solid blue; width: 150px">
+        <p>Front: <span id="front"><%= deck.cards[count].front %></span></p>
+        <p>Back: <span id="back"><%= deck.cards[count].back %></span></p>
+        <p id="demo"></p>
+    </div>
+    <% count ++ %>
+    <% }); %>
 </div>
+<button name="prev">prev</button>
+<button  name="next">next</button>
+
+
+
+<script>
+$(document).ready(function() {
+     var divs = $('.card>div');
+     var now = 0; // currently shown div
+     divs.hide().first().show(); // hide all divs except first
+     $("button[name=next]").click(function() {
+         divs.eq(now).hide();
+         now = (now + 1 < divs.length) ? now + 1 : 0;
+         divs.eq(now).show(); // show next
+     });
+     $("button[name=prev]").click(function() {
+         divs.eq(now).hide();
+         now = (now > 0) ? now - 1 : divs.length - 1;
+         divs.eq(now).show(); // show previous
+     });
+ });</script>
 
 <!--go back to home-->
 <a href="/decks/">home</a>
+
 
 <% include ./partials/footer %>
