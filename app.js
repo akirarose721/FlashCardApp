@@ -57,6 +57,7 @@ app.post("/decks", function(req, res){
         }
     });
 });
+
 // app.post("/decks/cards", function(req, res){
 //     //creat card
 //     Card.create(req.body.card, function(err, newCard){
@@ -81,7 +82,28 @@ app.get("/decks/:id", function(req, res) {
         }
     });
 });
+//EDIT ROUTE
+app.get("/decks/:id/edit", function(req, res) {
+    Deck.findById(req.params.id, function(err, foundDeck){
+        if(err){
+            res.redirect("/decks");
+        } else {
+            res.render("edit", {deck: foundDeck});
+        }
+    });
+});
 
+//UPDATE ROUTE
+app.put("/decks/:id", function(req,res){
+    req.body.deck.body = req.sanitize(req.body.deck.body);
+    Deck.findByIdAndUpdate(req.params.id, req.body.deck, function(err, updatedBlog){
+        if(err){
+            res.redirect("/decks");
+        } else {
+            res.redirect("/decks/" + req.params.id);
+        }
+    });
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Flashcard App server is running!");
