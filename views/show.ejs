@@ -1,4 +1,6 @@
 <% include ./partials/header %>
+<!--go back to home-->
+<a href="/decks/">home</a>
 
 <h1><%= deck.subject %></h1>
 <p>Chapter: <%=deck.chapter%> </p>
@@ -9,15 +11,16 @@
     <div style="border: 1px solid blue; width: 150px">
         <p>Front: <span id="front"><%= deck.cards[count].front %></span></p>
         <p>Back: <span id="back"><%= deck.cards[count].back %></span></p>
-        <p id="demo"></p>
+        <div>
+            <button name="prev">prev</button>
+            <button  name="next">next</button>
+        </div>
     </div>
     <% count ++ %>
     <% }); %>
 </div>
-<button name="prev">prev</button>
-<button  name="next">next</button>
 
-
+<a href="/decks/<%=deck._id%>/edit">Add cards<a>
 
 <script>
 $(document).ready(function() {
@@ -35,9 +38,5 @@ $(document).ready(function() {
          divs.eq(now).show(); // show previous
      });
  });</script>
-
-<!--go back to home-->
-<a href="/decks/">home</a>
-
 
 <% include ./partials/footer %>

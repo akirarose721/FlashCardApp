@@ -47,7 +47,6 @@ app.get("/decks/new", function(req, res) {
 //CREATE
 app.post("/decks", function(req, res){
     //create deck
-    console.log(req.body);
     Deck.create(req.body.deck, function(err, newDeck){
         if(err){
             res.send(err);
@@ -57,18 +56,6 @@ app.post("/decks", function(req, res){
         }
     });
 });
-
-// app.post("/decks/cards", function(req, res){
-//     //creat card
-//     Card.create(req.body.card, function(err, newCard){
-//         if(err) {
-//             res.redirect("/decks");
-//         } else {
-//             //redirect to show page
-//           res.redirect("/decks/cards");
-//         }
-//     });
-// });
 
 //SHOW
 app.get("/decks/:id", function(req, res) {
@@ -82,6 +69,7 @@ app.get("/decks/:id", function(req, res) {
         }
     });
 });
+
 //EDIT ROUTE
 app.get("/decks/:id/edit", function(req, res) {
     Deck.findById(req.params.id, function(err, foundDeck){
@@ -94,16 +82,17 @@ app.get("/decks/:id/edit", function(req, res) {
 });
 
 //UPDATE ROUTE
-app.put("/decks/:id", function(req,res){
-    req.body.deck.body = req.sanitize(req.body.deck.body);
-    Deck.findByIdAndUpdate(req.params.id, req.body.deck, function(err, updatedBlog){
+app.put("/decks/:id", function(req, res){
+    var card = {"front": req.body.deck.cards.front, "back": req.body.deck.cards.back};
+    Deck.findByIdAndUpdate(req.params.id, {$push:{cards:card}}, function(err, updatedDeck){
         if(err){
-            res.redirect("/decks");
-        } else {
-            res.redirect("/decks/" + req.params.id);
+            res.send(err);
+        }else {
+             res.redirect("/decks/" + req.params.id);
         }
     });
 });
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Flashcard App server is running!");
