@@ -93,6 +93,16 @@ app.put("/decks/:id", function(req, res){
     });
 });
 
+//DELETE ROUTE
+app.delete("/decks/:id", function(req, res){
+    Deck.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.send(err);
+        }else {
+            res.redirect("/decks");
+        }
+    });
+});
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Flashcard App server is running!");
