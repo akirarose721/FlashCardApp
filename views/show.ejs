@@ -1,16 +1,23 @@
 <% include ./partials/header %>
-<!--go back to home-->
-<a href="/decks/">home</a>
+<div class="show-header">
+    <h1 class="show-title"><%= deck.subject %></h1>
+    <h4 class="show-chapter">Chapter: <%=deck.chapter%> </h4>
+    <p>Date: <%= deck.created.toDateString() %></p>
+    <form id="delete" action="/decks/<%= deck._id%>?_method=DELETE" method="POST">
+        <button class="mini ui red button">DELETE!</button>
+    </form>
+</div>
 
-<h1><%= deck.subject %></h1>
-<p>Chapter: <%=deck.chapter%> </p>
-<p>Date: <%= deck.created.toDateString() %></p>
 <% var count = 0 %> 
-<div class="card">
+<div class="card-container">
     <% deck.cards.forEach(function(card){ %>
-    <div style="border: 1px solid blue; width: 150px">
-        <p>Front: <span id="front"><%= deck.cards[count].front %></span></p>
-        <p>Back: <span id="back"><%= deck.cards[count].back %></span></p>
+    <div>
+        <div id="front" class="card front-of-card">
+            <p>Front: <span id="front"><%= deck.cards[count].front %></span></p>
+        </div>
+        <div id="back" class="card back-of-card"> 
+            <p>Back: <span id="back"><%= deck.cards[count].back %></span></p>
+        </div>
         <div>
             <button name="prev">prev</button>
             <button  name="next">next</button>
@@ -19,12 +26,23 @@
     <% count ++ %>
     <% }); %>
 </div>
-
-<a href="/decks/<%=deck._id%>/edit">Add cards<a>
+<div id="add" class="mini ui blue basic button">
+    <a href="/decks/<%=deck._id%>/edit">Add cards<a>
+</div>
 
 <script>
+
+$('.front-of-card').click(function(){ 
+    $( "div.front-of-card" ).toggleClass( "hide" );
+    $("div.back-of-card").toggleClass("show")
+});
+$('.back-of-card').click(function(){ 
+    $( "div.front-of-card" ).toggleClass( "hide" );
+    $("div.back-of-card").toggleClass("show")
+});
+
 $(document).ready(function() {
-     var divs = $('.card>div');
+     var divs = $('.card-container>div');
      var now = 0; // currently shown div
      divs.hide().first().show(); // hide all divs except first
      $("button[name=next]").click(function() {

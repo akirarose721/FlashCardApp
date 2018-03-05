@@ -3,5 +3,23 @@
     <head>
         <title>Flashcard Page</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
     </head>
     <body>
+        <header>
+            <div class="ui inverted menu">
+                <!--go back to home-->
+                <a id="home" class="active item nav-links" href="/decks" >
+                    IN A FLASH
+                </a>
+                <a class="item nav-links" href="/decks" >
+                    home
+                </a>
+                <!--go to create new deck-->
+                <a class="item nav-links" href="/decks/new">
+                    New
+                </a>
+            </div>
+        </header>
+        <div id="main" class=container>

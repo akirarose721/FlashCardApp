@@ -21,8 +21,12 @@
 <%deck.cards.forEach(function(card){%>
     <div style="border: 1px solid blue; width: 150px">
         
-           <div><%=card.front%></div> 
-            <div><%=card.back%></div>    
+           <div style="border: 1px solid blue; width: 150px">
+               <p>Front: <%=card.front%></p>
+              </div> 
+            <div style="border: 1px solid blue; width: 150px">
+                <p>Back: <%=card.back%></p>
+            </div>    
          
     </div>  
 <% }); %>

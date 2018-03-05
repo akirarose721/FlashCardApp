@@ -1,9 +1,15 @@
 <% include ./partials/header %>
 
-<form action="/decks" method="POST">
-    <input type="text" name="deck[subject]" placeholder="subject">
-    <input type="text" name="deck[chapter]" placeholder="chapter">
-    <input type="submit">
+<form id="newForm" class="ui form" action="/decks" method="POST">
+    <div class="field">
+        <label>Subject: </label>
+        <input type="text" name="deck[subject]" placeholder="subject" required>
+    </div>
+    <div class="field">
+        <label>Chapter: </label>
+        <input type="text" name="deck[chapter]" placeholder="chapter" required>
+    </div>
+    <input class="ui button" type="submit">
 </form>
 
 <% include ./partials/footer %>

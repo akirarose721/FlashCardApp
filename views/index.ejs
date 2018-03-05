@@ -1,18 +1,24 @@
 <% include ./partials/header %>
 
-<h1>Flashcard App index!</h1>
-<a href="/decks/new">New</a>
 <% decks.reverse() %>
-<%decks.forEach(function(deck){%>
-    <p>
-        <%=deck.subject%>
-        <strong>
-            <%=deck.chapter%>
-        </strong>
-        <a href="/decks/<%= deck._id %>">see more</a>
-    </p>  
-      
-<% }); %>
-
+<div class=" ui three column grid">
+    <%decks.forEach(function(deck){%>
+        <a href="/decks/<%= deck._id %>">
+           <div class="decks ">
+               <div id="subject">
+                    <h1><%=deck.subject%></h1>
+                </div>
+                <div id="chapter">
+                    <h4>Chapter <%=deck.chapter%></h4>
+                </div>
+            </div>
+        </a>
+    <% }); %>
+    <a href="/decks/new">
+           <div id="plusCard" class="decks ">
+               <p id="plusSymbol">+</p> 
+            </div>
+        </a>
+</div>
 
 <% include ./partials/footer %>
