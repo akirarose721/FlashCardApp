@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 <div class="ui grid container">
     <div class="show-header">
-            <h1 class="show-title"><%= deck.subject %></h1>
+            <a href="/decks/<%=deck.id%>"><h1 class="show-title"><%= deck.subject %></h1></a>
             <h4 class="show-chapter">Chapter: <%=deck.chapter%> </h4>
             <p>Date: <%= deck.created.toDateString() %></p>
     </div>
