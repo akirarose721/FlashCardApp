@@ -16,7 +16,7 @@ app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function callback(){
+
     var deckSchema = new mongoose.Schema({
         subject: String,
         chapter: Number,
@@ -111,6 +111,3 @@ db.once("open", function callback(){
     app.listen(process.env.PORT, process.env.IP, function(){
         console.log("Flashcard App server is running!");
     });
-
-
-});
