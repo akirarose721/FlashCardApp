@@ -4,7 +4,7 @@
 <div class=" ui three column grid">
     <%decks.forEach(function(deck){%>
         <a href="/decks/<%= deck._id %>">
-           <div class="decks ">
+           <div class="decks">
                <div id="subject">
                     <h1><%=deck.subject%></h1>
                 </div>
@@ -15,8 +15,8 @@
         </a>
     <% }); %>
     <a href="/decks/new">
-           <div id="plusCard" class="decks ">
-               <p id="plusSymbol">+</p> 
+           <div id="plus-card" class="decks ">
+               <p id="plus-symbol">+</p> 
             </div>
         </a>
 </div>

@@ -1,15 +1,15 @@
 <% include ./partials/header %>
-
-<form id="newForm" class="ui form" action="/decks" method="POST">
-    <div class="field">
-        <label>Subject: </label>
-        <input type="text" name="deck[subject]" placeholder="subject" required>
+    <div class="ui grid container">
+        <form id="new-form" class="ui form" action="/decks" method="POST">
+            <div class="field">
+                <label>Subject: </label>
+                <input type="text" name="deck[subject]" placeholder="subject" maxlength="10" required>
+            </div>
+            <div class="field">
+                <label>Chapter: </label>
+                <input type="text" name="deck[chapter]" placeholder="chapter" maxlength="4" required>
+            </div>
+            <input class="ui button" type="submit">
+        </form>
     </div>
-    <div class="field">
-        <label>Chapter: </label>
-        <input type="text" name="deck[chapter]" placeholder="chapter" required>
-    </div>
-    <input class="ui button" type="submit">
-</form>
-
 <% include ./partials/footer %>

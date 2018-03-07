@@ -4,7 +4,6 @@
     letter-spacing: .2em;
 }
 #main.container{
-    padding-left: 4em;
     padding-top: 4em;
     padding-bottom: 2em;
 }
@@ -38,7 +37,7 @@
     color: #6d6f70;
 }
 
-#plusSymbol {
+#plus-symbol {
     margin-top: .2em;
     font-size: 8em;
     color: #1059ce;
@@ -49,7 +48,7 @@
     margin-top: 1em;
     border-radius: 4px;
 }
-#newForm {
+#new-form {
     max-width: 500px;
     margin-right: 2em;
 }
@@ -64,37 +63,31 @@ p {
     padding-bottom: 10px;
 }
 .show-title {
+    text-transform: uppercase;
     margin: 0;
 }
 .show-chapter {
     margin: 0;
 }
-.delete-btn {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
+
 .card-container {
     padding-top: 10em;
     padding-left: 5em;
-    max-width: 350px;
+    max-width: 650px;
     margin: auto;
+    padding-right: 2em;
 }
 .card {
-    height: 200px;
-    width: 300px;
-    margin: 0;
-    margin-top: 20px;
+    height: 5em;
+    width: 10em;
+    padding-top: 2em;
     text-align: center;
     border: 1px solid #6d6f70;
     border-radius: 4px;
     box-shadow: 7px 5px 10px #6d6f70;
-}
-#delete {
-    float: left;
-    margin-top: 0;
-}
-#add {
-    
+    font-size: 4vmax;
+    /*overflow-x: scroll;*/
+    /*word-wrap: break-word;*/
 }
 .back-of-card {
   display: none;
@@ -105,4 +98,51 @@ p {
 .hide{
     display: none;
 }
+.nav-btns {
+    margin-top: 1em;
+    float: right;
+}
+.note {
+    font-size: 11px;
+    width: 10px;
+    float: right;
+    opacity: 0.8;
+    margin-top: 4em;
+    margin-right: 4em;
+}
+#delete {
+    margin-top: 0;
+    float: left;
+}
+#add {
+    float: left;
+}
 
+/*UPDATE*/
+.edit-card {
+    height: 150px;
+    width: 300px;
+    font-size: 18px;
+    margin-top: 2em;
+    padding-top: 10px;
+}
+#add-card-form {
+    margin-left: 12em;
+    max-width: 400px;
+}
+#show-all-cards {
+    padding-left: 5em;
+}
+
+/*Responsive*/
+@media(max-width: 589px) {
+    .card {
+        height: 150px;
+        width: 300px;
+        padding-top: 2em;
+    }
+    .note {
+        margin-top: 3em;
+        margin-right: 3em; 
+    }
+}

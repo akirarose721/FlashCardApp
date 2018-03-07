@@ -1,35 +1,48 @@
 <% include ./partials/header %>
-<!--go back to home-->
-<a href="/decks/">home</a>
-
-<h1><%= deck.subject %></h1>
-<p>Chapter: <%=deck.chapter%> </p>
-<p>Date: <%= deck.created.toDateString() %></p>
-<% var count = 0 %> 
-<form action="/decks/<%=deck._id%>?_method=PUT" method="POST" >
-    <div class="card">
-        <div style="border: 1px solid blue; width: 150px">
-            <textarea name="deck[cards][front]"></textarea>
-            <textarea name="deck[cards][back]"></textarea>
-            <input type="submit">
-        </div>
+<div class="ui grid container">
+    <div class="show-header">
+            <h1 class="show-title"><%= deck.subject %></h1>
+            <h4 class="show-chapter">Chapter: <%=deck.chapter%> </h4>
+            <p>Date: <%= deck.created.toDateString() %></p>
     </div>
-</form>
+<% var count = 0 %> 
+    <form id="add-card-form" class="ui form" action="/decks/<%=deck._id%>?_method=PUT" method="POST" >
+        <div class="field">
+            <div>
+                <label>Front: </label>
+                <textarea name="deck[cards][front]" maxlength="15" required></textarea>
+                <label>Back: </label>
+                <textarea name="deck[cards][back]" maxlength="15" required></textarea>
+                <input class="ui button" type="submit">
+            </div>
+        </div>
+    </form>
 
 
 <% deck.cards.reverse() %>
-<%deck.cards.forEach(function(card){%>
-    <div style="border: 1px solid blue; width: 150px">
-        
-           <div style="border: 1px solid blue; width: 150px">
-               <p>Front: <%=card.front%></p>
-              </div> 
-            <div style="border: 1px solid blue; width: 150px">
-                <p>Back: <%=card.back%></p>
-            </div>    
-         
-    </div>  
-<% }); %>
-
+<div id="show-all-cards" class="ui grid container">
+        <% deck.cards.forEach(function(card){ %>
+            <div>
+                <div class="card front-of-card edit-card">
+                    <p id="front"><%= deck.cards[count].front %></span></p>
+                </div>
+                <div class="card back-of-card edit-card"> 
+                    <p id="back"><em><%= deck.cards[count].back %></em></span></p>
+                </div>
+            </div>
+            <% count ++ %>
+            <% }); %>
+</div>
+</div>
+<script>
+ $('.front-of-card').click(function(){ 
+        $( "div.front-of-card" ).toggleClass( "hide" );
+        $("div.back-of-card").toggleClass("show")
+    });
+    $('.back-of-card').click(function(){ 
+        $( "div.front-of-card" ).toggleClass( "hide" );
+        $("div.back-of-card").toggleClass("show")
+    });
+</script>
 
 <% include ./partials/footer %>

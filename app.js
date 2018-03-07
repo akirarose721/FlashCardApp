@@ -88,7 +88,7 @@ app.put("/decks/:id", function(req, res){
         if(err){
             res.send(err);
         }else {
-             res.redirect("/decks/" + req.params.id);
+             res.redirect("/decks/" + req.params.id + "/edit");
         }
     });
 });
