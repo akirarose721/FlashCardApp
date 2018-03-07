@@ -138,7 +138,7 @@ p {
 @media screen and (max-width: 1040px) {
     /*INDEX*/
     .ui.three.column.grid {
-        width: 100%;
+        width: 225px;
         margin: 0 auto;
     }
     .decks {
