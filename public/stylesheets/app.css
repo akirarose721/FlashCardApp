@@ -135,7 +135,23 @@ p {
 }
 
 /*Responsive*/
-@media(max-width: 589px) {
+@media screen and (max-width: 1040px) {
+    /*EDIT*/
+    .edit-card {
+        height: 150px;
+        width: 300px;
+        font-size: 18px;
+        margin-top: 2em;
+        padding-top: 10px;
+    }
+    #add-card-form {
+        margin-left: 0;
+        max-width: 200px;
+    }
+    #show-all-cards {
+        padding-left: 0;
+    }
+    /*SHOW*/
     .card {
         height: 150px;
         width: 300px;
