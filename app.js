@@ -6,7 +6,7 @@ var express         = require("express"),
     expressSanitizer= require("express-sanitizer");
     
 //APP CONGIG
-let uri = "MONGODB_URI";
+let uri = "mongodb://heroku_b8clfxrf:b1q4sbc2kdibntji64kefhb6c5@ds257848.mlab.com:57848/heroku_b8clfxrf";
 mongoose.connect(uri);
 let db = mongoose.connection;
 app.set("view engine", "ejs");
