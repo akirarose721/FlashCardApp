@@ -6,7 +6,7 @@ var express         = require("express"),
     expressSanitizer= require("express-sanitizer");
     
 //APP CONGIG
-let uri = process.env.MONGO_URI;
+let uri = process.env.MONGODB_URI;
 mongoose.connect(uri);
 let db = mongoose.connection;
 app.set("view engine", "ejs");
