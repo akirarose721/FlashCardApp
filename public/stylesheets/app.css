@@ -43,6 +43,14 @@
     font-size: 8em;
     color: #1059ce;
 }
+.my-decks-title {
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+.my-decks-title h1 {
+    font-size: 30px;
+}
 /*NEW*/
 .ui.button {
     float: right;
@@ -141,14 +149,6 @@ p {
     .ui.three.column.grid {
         width: 225px;
         margin: 0 auto;
-    }
-    .my-decks-title {
-        height: 50px;
-        width: 100%;
-        text-align: center;
-    }
-    .my-decks-title h1 {
-        font-size: 30px;
     }
     .decks {
         height: 200px;
