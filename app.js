@@ -6,7 +6,7 @@ var express         = require("express"),
     expressSanitizer= require("express-sanitizer");
     
 //APP CONGIG
-let uri = "process.env.MONGODB_URI";
+let uri = "\"" + process.env.MONGODB_URI + "\"";
 mongoose.connect(uri);
 let db = mongoose.connection;
 app.set("view engine", "ejs");
@@ -108,6 +108,6 @@ db.on("error", console.error.bind(console, "connection error: "));
         });
     });
     
-    app.listen(process.env.PORT, process.env.IP, process.env.MONGODB_URI, function(){
+    app.listen(process.env.PORT, process.env.IP, function(){
         console.log("Flashcard App server is running!");
     });
