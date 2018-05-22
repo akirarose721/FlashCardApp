@@ -108,6 +108,6 @@ db.on("error", console.error.bind(console, "connection error: "));
         });
     });
     
-    app.listen(process.env.PORT, process.env.IP, function(){
+    app.listen(process.env.PORT, process.env.IP, process.env.MONGODB_URI, function(){
         console.log("Flashcard App server is running!");
     });
