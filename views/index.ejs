@@ -2,7 +2,7 @@
 
 <% decks.reverse() %>
 <div class=" ui three column grid">
-    <h1>My Decks</h1>
+    <div><h1>My Decks</h1></div>
     <%decks.forEach(function(deck){%>
         <a href="/decks/<%= deck._id %>">
            <div class="decks">
